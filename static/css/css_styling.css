@@ -1,0 +1,45 @@
+body{
+    background-color: rgba(245, 248, 248, 0.89); 
+}
+ 
+#home-bg{
+    background: url("../images/img1.jpg") 30% no-repeat fixed;
+    color: white;
+    height: 650px;
+    padding: 100% 0 0 0;    
+}
+#bmark{
+    text-align: center;
+    font-size: 200%;
+    border-style: hidden;
+    border-color: rgb(213, 219, 230);
+    text-shadow: 1px 1px 2px black, 0 0 25px rgb(155, 197, 171), 0 0 5px darkblue;
+    color: white;
+    border-radius: 10px;
+    background-image: linear-gradient(to right, rgb(208, 233, 208), white, rgb(32, 136, 32) );
+}
+#cont{
+    border-style: hidden;
+}
+
+.link-text-size{
+    font-size: large;
+    padding-top: 0%;
+}
+
+.align-nav-center{
+  align-items: center !important;
+}
+
+div#nav{
+    text-align: center;
+}
+
+div#nav ul{
+   display: inline-block;
+}
+
+#nav ul {
+   display: inline-block;
+   list-style-type: none;
+}

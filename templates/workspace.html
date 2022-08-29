@@ -1,0 +1,23 @@
+{% extends 'basefile.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+
+    <div class=" row justify-content-evenly p-2 mb-2 bg-light text-dark " id="cont">
+        <div class="col-6">
+            <div class="card">
+                {% for image in images %}
+                    <div class="col-md-4">
+                        {{ image.name }}
+                        <img src="{{ image.user_img.url }}" 
+                        class="img-responsive" 
+                        style="width: 100%; float: left; margin-right: 10px;"/>
+                    </div>
+                {% endfor %}
+               
+            </div>
+        </div>
+        
+    </div>
+
+{% endblock content %}

@@ -1,0 +1,108 @@
+{% extends 'basefile.html' %}
+{% load static %}
+{% block content %}
+    <div class="container">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Upload</button>
+        </form>
+        {% if img_obj %}
+            <h3>Succesfully uploaded: {{ img_obj.title }}</h3>
+            
+            <div class="clearfix">
+                <img src="{{ img_obj.image.url }}" class="col-md-6 float-md-end mb-3 ms-md-3" alt="connect", style="max-height: max-content;"">
+                <p>The file size is: {{ file_size }}</p>
+                <p>The mean square error is: {{ mean_sqaure_err }}</p>
+                <p>The compression ratio is: {{ cp }}</p>
+                <p>{{ display }}</p>
+                <img src="{{ htmldisplay }}" alt="connect">
+                <form action="">
+                    <fieldset>
+                        
+                        <fieldset>
+                            Red Channel:
+                            <input list="number" name="numbers" id="">
+                            <datalist id="integers">
+                                <option value="0"></option>
+                                <option value="1"></option>
+                                <option value="2"></option>
+                            </datalist>
+
+                            Channel(between 0.005 to 1):
+                            <input type="number" name="quantity" min="0.005" max="1">
+                            <br>
+
+                            between 0 to 5
+                            <input list="number" name="numbers" id="">
+                            <datalist id="integers">
+                                <option value="0">
+                                <option value="1">
+                                <option value="2">
+                                <option value="4">
+                                <option value="5">
+                            </datalist>
+                        </fieldset>
+                        <br>
+
+                        
+                        <fieldset>
+                            Green Channel:
+                            <input list="number" name="numbers" id="">
+                            <datalist id="integers">
+                                <option value="0"></option>
+                                <option value="1"></option>
+                                <option value="2"></option>
+                            </datalist>
+
+                            Channel(between 0.005 to 1):
+                            <input type="number" name="quantity" min="0.005" max="1">
+                            <br>
+
+                            between 0 to 5:
+                            <input list="number" name="numbers" id="">
+                            <datalist id="integers">
+                                <option value="0">
+                                <option value="1">
+                                <option value="2">
+                                <option value="4">
+                                <option value="5">
+                            </datalist>
+                        </fieldset>
+                        <br>
+
+                        
+                        <fieldset>
+                            Blue Channel:
+                            <input list="number" name="numbers" id="">
+                            <datalist id="integers">
+                                <option value="0"></option>
+                                <option value="1"></option>
+                                <option value="2"></option>
+                            </datalist>
+
+                            Channel(between 0.005 to 1):
+                            <input type="number" name="quantity" min="0.005" max="1">
+                            <br>
+
+                            between 0 to 5:
+                            <input list="number" name="numbers" id="">
+                            <datalist id="integers">
+                                <option value="0">
+                                <option value="1">
+                                <option value="2">
+                                <option value="4">
+                                <option value="5">
+                            </datalist>
+                        </fieldset>
+                        
+                    </fieldset>
+                </form>
+                
+            </div>
+        {% endif %}
+
+
+    </div>
+
+{% endblock content %}
