@@ -1,0 +1,80 @@
+{% extends 'basefile.html' %}
+{% load static %}
+{% block content %}
+<body id="bg">
+    
+    <div class="container"  >
+        
+        {% if img_obj %}
+            <h3>Welcome {{ img_obj.title }}</h3>
+            <h3>testing: {{ t1 }}</h3>
+            <p>{{ dir_ }}</p>
+            <div class="row">
+                <div class="col-lg-6">
+                  <div class="box-element">
+                    <img class="img-thumbnail" src="{{ img_path }}" alt="">
+                  </div>
+                  <br>
+                </div>
+                <div class="col-lg-6">
+                    <div class="box-element">
+                      <img class="img-thumbnail" src="{{ testim }}" alt="">
+                    </div>
+                    <br>
+                </div>
+            </div>
+            <form method="post" enctype="multipart/form-data" action="dwtparameters">
+              {% csrf_token %}
+              <div class="col-md-4 col-sm-4"><label for="first_channel">Channel0:</label></div><input name="channel_0" type="text" value="0"><br>
+              <div class="col-md-4 col-sm-4"><label for="first_keep">Keep0:</label></div><input name="keep_0" type="text" value="0.05"><br>
+              <div class="col-md-4 col-sm-4"><label for="first_depth">Depth0:</label></div><input name="depth_0" type="text" value="4"><br>
+              <br>
+              <input type="submit" value="Submit">
+            </form>
+            <br>
+            
+            
+                
+        <br>
+        <br>
+        <br>
+        <h5>
+            Add new image:
+        </h5>
+        {% endif %}
+        {% if testim %}
+          <div class="row">
+              <div class="col-lg-6">
+                <div class="box-element">
+                  <img class="img-thumbnail" src="{{ img_path }}" alt="">
+                </div>
+                <br>
+              </div>
+              <div class="col-lg-6">
+                  <div class="box-element">
+                    <img class="img-thumbnail" src="{{ testim }}" alt="">
+                  </div>
+                  <br>
+              </div>
+          </div>
+
+          <form method="post" enctype="multipart/form-data" action="dwtparameters">
+            {% csrf_token %}
+            <div class="col-md-4 col-sm-4"><label for="first_channel">Channel0:</label></div><input name="channel_0" type="text" value="0"><br>
+            <div class="col-md-4 col-sm-4"><label for="first_keep">Keep0:</label></div><input name="keep_0" type="text" value="0.05"><br>
+            <div class="col-md-4 col-sm-4"><label for="first_depth">Depth0:</label></div><input name="depth_0" type="text" value="4"><br>
+            <br>
+            <input type="submit" value="Submit">
+          </form>
+          <br>
+        {% endif %}
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Upload</button>
+        </form>
+
+    </div>
+
+</body>
+{% endblock content %}

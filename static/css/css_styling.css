@@ -1,13 +1,12 @@
-body{
-    background-color: rgba(245, 248, 248, 0.89); 
+
+#bg{
+    background-image: url("{% static 'images/img1.jpg' %}");
+    background-position: top;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
- 
-#home-bg{
-    background: url("../images/img1.jpg") 30% no-repeat fixed;
-    color: white;
-    height: 650px;
-    padding: 100% 0 0 0;    
-}
+
 #bmark{
     text-align: center;
     font-size: 200%;

@@ -26,7 +26,6 @@ plt.rcParams.update({'font.size':16})
   <input type="submit">
 </form>
 '''
-#os.chdir('../')
 
 class DiscreteWaveletTransform:
     def __init__(self, image,):
@@ -68,9 +67,9 @@ class DiscreteWaveletTransform:
     def stackChannels(self, first, second, third):
         return np.stack((first, second, third), axis=2)
 
-    def save(self, compressed_array_stacked):
-        io.imsave(self.path, compressed_array_stacked)
-        return str(self.path)
+    def save(self, path, compressed_array_stacked):
+        io.imsave(path, compressed_array_stacked)
+        return str(path)
 
     def oneChannel(self, imgArray):
         #path = str(self.keep) + '_DWT.jpg'

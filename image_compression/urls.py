@@ -6,9 +6,9 @@ from . import views
 app_name = 'image_compression'
 
 urlpatterns = [
-    path('', views.kmeans, name='kmeans'),
-    path('dwt/', views.dwt, name='dwt'),
-    #path('success/', views.success, name='success'),
-    #path('transform/', views.display_images, 'transform')
+    path('', views.dwt, name='img_upload'),
+    path('kmeans/', views.kmeans, name='kmeans'),
+    path('dwtparameters', views.dwtparameters, name='dwtparameters'),
+    #path('dwt/', views.display_images, 'transform')
 ]
 
