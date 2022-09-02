@@ -2,13 +2,18 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from . import views
+from django.conf.urls import url
+from django.views.static import serve
 
 app_name = 'image_compression'
 
 urlpatterns = [
-    path('', views.dwt, name='img_upload'),
-    path('kmeans/', views.kmeans, name='kmeans'),
+    path('', views.dwt, name='dwt'),
+    path('kmeans', views.kmeans, name='kmeans'),
     path('dwtparameters', views.dwtparameters, name='dwtparameters'),
-    #path('dwt/', views.display_images, 'transform')
+    path('workspace', views.work, name='workspace1'),
+    path('formtest', views.formtest, name='formtest'),
+
+    url(r'^download_image/(?P<path>.*)$',serve,{'document_root':settings.MEDIA_ROOT})
 ]
 

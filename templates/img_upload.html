@@ -1,73 +1,107 @@
 {% extends 'basefile.html' %}
 {% load static %}
 {% block content %}
-<body id="bg">
-    
     <div class="container"  >
         
         {% if img_obj %}
-            <h3>Welcome {{ img_obj.title }}</h3>
-            <h3>testing: {{ t1 }}</h3>
-            <p>{{ dir_ }}</p>
+            <p><b>Welcome {{ img_obj.title }}</b></p>
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg">
                   <div class="box-element">
                     <img class="img-thumbnail" src="{{ img_path }}" alt="">
                   </div>
-                  <br>
                 </div>
                 <div class="col-lg-6">
-                    <div class="box-element">
-                      <img class="img-thumbnail" src="{{ testim }}" alt="">
-                    </div>
-                    <br>
-                </div>
-            </div>
-            <form method="post" enctype="multipart/form-data" action="dwtparameters">
-              {% csrf_token %}
-              <div class="col-md-4 col-sm-4"><label for="first_channel">Channel0:</label></div><input name="channel_0" type="text" value="0"><br>
-              <div class="col-md-4 col-sm-4"><label for="first_keep">Keep0:</label></div><input name="keep_0" type="text" value="0.05"><br>
-              <div class="col-md-4 col-sm-4"><label for="first_depth">Depth0:</label></div><input name="depth_0" type="text" value="4"><br>
-              <br>
-              <input type="submit" value="Submit">
-            </form>
-            <br>
-            
-            
-                
-        <br>
-        <br>
-        <br>
-        <h5>
-            Add new image:
-        </h5>
-        {% endif %}
-        {% if testim %}
-          <div class="row">
-              <div class="col-lg-6">
-                <div class="box-element">
-                  <img class="img-thumbnail" src="{{ img_path }}" alt="">
-                </div>
-                <br>
-              </div>
-              <div class="col-lg-6">
                   <div class="box-element">
-                    <img class="img-thumbnail" src="{{ testim }}" alt="">
+                    <form method="post" enctype="multipart/form-data" action="dwtparameters">
+                      {% csrf_token %}
+                      <div>
+                        <div col-md-4>
+                          <div class="form-group">
+                            <label for="exampleFormControlSelect1"><b>Select channel 1:</b></label>
+                            <select name="channel_0" class="form-control" id="exampleFormControlSelect1">
+                              <option>0</option>
+                              <option>1</option>
+                              <option>2</option>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleFormControlInput1"><b>Enter Keep 1:</b></label>
+                            <input name="keep_0" type="number" class="form-control" id="exampleFormControlInput1" max="1.000" placeholder="min:0.0005, max:1" step="0.0001" value="0.05">
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleFormControlSelect1"><b>Select Depth 1:</b></label>
+                            <select name="depth_0" class="form-control" id="exampleFormControlSelect1">
+                              <option>1</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                            </select>
+                          </div>
+                        </div>
+                        <br>
+        
+                        <div col-md-4>
+                          <div class="form-group">
+                            <label for="exampleFormControlSelect1"><b>Select Channel 2:</b></label>
+                            <select name="channel_1" class="form-control" id="exampleFormControlSelect1">
+                              <option>0</option>
+                              <option>1</option>
+                              <option>2</option>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleFormControlInput1"><b>Enter Keep 2:</b></label>
+                            <input name="keep_1" type="number" class="form-control" id="exampleFormControlInput1" max="1.000" placeholder="min:0.0005, max:1" step="0.0001" value="0.05">
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleFormControlSelect1"><b>Select Depth 2</b></label>
+                            <select name="depth_1" class="form-control" id="exampleFormControlSelect1">
+                              <option>1</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                            </select>
+                          </div>
+                        </div>
+                        <br>
+        
+                        <div col-md-4>
+                          <div class="form-group">
+                            <label for="exampleFormControlSelect1"><b>Select Channel 3:</b></label>
+                            <select name="channel_2" class="form-control" id="exampleFormControlSelect1">
+                              <option>0</option>
+                              <option>1</option>
+                              <option>2</option>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleFormControlInput1"><b>Enter Keep 3:</b></label>
+                            <input name="keep_2" type="number" class="form-control" id="exampleFormControlInput1" max="1.000" placeholder="min:0.0005, max:1" step="0.0001" value="0.05">
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleFormControlSelect1"><b> Select Depth 3:</b></label>
+                            <select name="depth_2" class="form-control" id="exampleFormControlSelect1">
+                              <option>1</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                            </select>
+                          </div>
+                        </div>
+                        <input type="submit" value="Submit">
+                      </div>
+                    </form>
                   </div>
-                  <br>
               </div>
-          </div>
-
-          <form method="post" enctype="multipart/form-data" action="dwtparameters">
-            {% csrf_token %}
-            <div class="col-md-4 col-sm-4"><label for="first_channel">Channel0:</label></div><input name="channel_0" type="text" value="0"><br>
-            <div class="col-md-4 col-sm-4"><label for="first_keep">Keep0:</label></div><input name="keep_0" type="text" value="0.05"><br>
-            <div class="col-md-4 col-sm-4"><label for="first_depth">Depth0:</label></div><input name="depth_0" type="text" value="4"><br>
-            <br>
-            <input type="submit" value="Submit">
-          </form>
-          <br>
+            </div>
+            <button class="btn">
+              <a href="{{ img_path }}" class="btn btn-outline-secondary add-btn" 
+              download="{{ img_path }}" >Download</a>
+            </button>
         {% endif %}
+        
+
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
@@ -75,6 +109,4 @@
         </form>
 
     </div>
-
-</body>
 {% endblock content %}

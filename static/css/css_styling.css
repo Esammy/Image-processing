@@ -1,10 +1,15 @@
 
-#bg{
-    background-image: url("{% static 'images/img1.jpg' %}");
+.bg{
+    background-color: rgb(255, 254, 254);
     background-position: top;
-    background-size: 100%;
+    background-size:cover;
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-attachment:scroll;
+}
+#dwt{
+    text-align: center;
+    font-size: x-large;
+    font-family:cursive;
 }
 
 #bmark{
