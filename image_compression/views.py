@@ -14,7 +14,7 @@ class Holder:
 def kmeans(request):
     return render(request, 'kmean_comp.html')
 
-#def workspace(request):
+
 
 test = Holder()
 
@@ -81,22 +81,7 @@ def dwtparameters(request):
         channel_2 = request.POST.get('channel_2')
         keep_2 = request.POST.get('keep_2')
         depth_2 = request.POST.get('depth_2')
-        '''
-
-        channels = [channel_0, channel_1, channel_2]
-        keeps = [keep_0, keep_1, keep_2]
-        depths = [depth_0, depth_1, depth_2]
-
-        for channel in channels:
-            if (channel < 0 or channel > 2):
-                return redirect(request, 'img_upload.html')
-        for keep in keeps:
-            if (keep < 0.0005 or keep > 1):
-                return redirect(request, 'img_upload.html')
-        for depth in depths:
-            if (depth < 0 or depth > 4):
-                return redirect(request, 'img_upload.html')
-        '''
+       
 
         user = DiscreteWaveletTransform('.' + str(img_path))
         first_C = user.imgchannel(int(channel_0), keep=float(keep_0), n = int(depth_0), w ='db1')
@@ -129,15 +114,6 @@ def formtest(request):
         print(request.POST.dict())
         return render(request, 'dwt.html')
 
-def download(request,path):
-    file_path = os.path.join(settings.MEDIA_ROOT,path)
-    if os.path.exists(file_path):
-        with open(file_path, 'rb') as fh:
-            response = HttpResponse(fh.read(), content_type= "application/admin_up_load")
-            response['Content-Dispositon'] = 'inline;filename='+os.basename(file_path)
-            return response
-
-    raise Http404
 
 def safe_name(file_name):
     """

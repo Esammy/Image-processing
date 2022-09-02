@@ -1,8 +1,22 @@
 {% extends 'basefile.html' %}
 {% load static %}
 {% block content %}
-<body id="bg">
     <div class="container"  >
+      <p>
+        <a class="btn btn-secondary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Note:</a>
+      </p>
+      <div class="row">
+        <div class="col">
+          <div class="collapse multi-collapse" id="multiCollapseExample1">
+            <div class="card card-body">
+              To Get the original RGB image set:<br>
+               channel 1 = 0, channel 2 = 1, channel 3 = 2,<br>
+               set all the keep to 1.0,<br>
+               and all the depth to 4
+            </div>
+          </div>
+        </div>
+      </div>
             <div class="row">
                 <div class="col-lg-6">
                   <div class="box-element">
