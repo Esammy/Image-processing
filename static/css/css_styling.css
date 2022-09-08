@@ -12,6 +12,34 @@
     font-family:cursive;
 }
 
+.botton{
+    background-color: #ecedf7;
+    border: none;
+    color: white;
+    padding: 20px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    float: left;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+.button2{
+    background-color: darkgrey;
+    color: black;
+    border: 2px solid #4CAF50;
+    
+}
+.button2:hover{
+    background-color: #4CAF50;
+    color: white;
+    box-shadow: 0 12px 16px 0 
+    rgba(0,0,0,0.24),0 17px 50px 0
+    rgba(0,0,0,0.19);
+}
+
 #bmark{
     text-align: center;
     font-size: 200%;

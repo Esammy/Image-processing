@@ -1,118 +1,159 @@
 {% extends 'basefile.html' %}
 {% load static %}
 {% block content %}
-    <div class="container"  >
-      <p>
-        <a class="btn btn-secondary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Note:</a>
-      </p>
-      <div class="row">
-        <div class="col">
-          <div class="collapse multi-collapse" id="multiCollapseExample1">
-            <div class="card card-body">
-              To Get the original RGB image set:<br>
-               channel 1 = 0, channel 2 = 1, channel 3 = 2,<br>
-               set all the keep to 1.0,<br>
-               and all the depth to 4
-            </div>
+  <div class="container"  >
+    
+    <p>
+    <a class="btn btn-secondary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Note:</a>
+    </p>
+    <div class="row">
+      <div class="col">
+        <div class="collapse multi-collapse" id="multiCollapseExample1">
+          <div class="card card-body">
+            To Get the original RGB image set:<br>
+            channel 1 = 0, channel 2 = 1, channel 3 = 2,<br>
+            set all the keep to 1.0,<br>
+            and all the depth to 4
           </div>
         </div>
       </div>
-            <div class="row">
-                <div class="col-lg-6">
-                  <div class="box-element">
-                    <img class="img-thumbnail" src="{{ testim }}" alt="">
-                  </div>
-                  <br>
-                </div>
-                
-                <div class="col-lg-6">
-                    <div class="box-element">
-                      <form method="post" enctype="multipart/form-data" action="dwtparameters">
-                        {% csrf_token %}
-                        <div>
-                          <div class="form-group">
-                            <label for="exampleFormControlSelect1"><b>Select channel 1:</b></label>
-                            <select name="channel_0" class="form-control" id="exampleFormControlSelect1">
-                              <option>0</option>
-                              <option>1</option>
-                              <option>2</option>
-                            </select>
-                          </div>
-                          <div class="form-group">
-                            <label for="exampleFormControlInput1"><b>Enter Keep 1:</b></label>
-                            <input name="keep_0" type="number" class="form-control" id="exampleFormControlInput1" max="1.000" placeholder="min:0.0005, max:1" step="0.0001" value="0.05">
-                          </div>
-                          <div class="form-group">
-                            <label for="exampleFormControlSelect1"><b>Select Depth 1:</b></label>
-                            <select name="depth_0" class="form-control" id="exampleFormControlSelect1">
-                              <option>1</option>
-                              <option>2</option>
-                              <option>3</option>
-                              <option>4</option>
-                            </select>
-                          </div>
-                        </div>
-                        <br>
-            
-                        <div>
-                          <div class="form-group">
-                            <label for="exampleFormControlSelect1"><b>Select Channel 2:</b></label>
-                            <select name="channel_1" class="form-control" id="exampleFormControlSelect1">
-                              <option>0</option>
-                              <option>1</option>
-                              <option>2</option>
-                            </select>
-                          </div>
-                          <div class="form-group">
-                            <label for="exampleFormControlInput1"><b>Enter Keep 2:</b></label>
-                            <input name="keep_1" type="number" class="form-control" id="exampleFormControlInput1" max="1.000" placeholder="min:0.0005, max:1" step="0.0001" value="0.05">
-                          </div>
-                          <div class="form-group">
-                            <label for="exampleFormControlSelect1"><b>Select Depth 2</b></label>
-                            <select name="depth_1" class="form-control" id="exampleFormControlSelect1">
-                              <option>1</option>
-                              <option>2</option>
-                              <option>3</option>
-                              <option>4</option>
-                            </select>
-                          </div>
-                        </div>
-                        <br>
-            
-                        <div>
-                          <div class="form-group">
-                            <label for="exampleFormControlSelect1"><b>Select Channel 3:</b></label>
-                            <select name="channel_2" class="form-control" id="exampleFormControlSelect1">
-                              <option>0</option>
-                              <option>1</option>
-                              <option>2</option>
-                            </select>
-                          </div>
-                          <div class="form-group">
-                            <label for="exampleFormControlInput1"><b>Enter Keep 3:</b></label>
-                            <input name="keep_2" type="number" class="form-control" id="exampleFormControlInput1" max="1.000" placeholder="min:0.0005, max:1" step="0.0001" value="0.05">
-                          </div>
-                          <div class="form-group">
-                            <label for="exampleFormControlSelect1"><b> Select Depth 3:</b></label>
-                            <select name="depth_2" class="form-control" id="exampleFormControlSelect1">
-                              <option>1</option>
-                              <option>2</option>
-                              <option>3</option>
-                              <option>4</option>
-                            </select>
-                          </div>
-                        </div>
-                        
-                        <input style="float: text-center"; type="submit" value="Submit">
-                      </form>
-                    </div>
-                    <br>
-                </div>
-            </div>
-            <button class="btn">
-              <a href="{{ testim }}" class="btn btn-outline-secondary add-btn" 
-              download="{{ testim }}" >Download</a>
-            </button>
-        <p><button><a href="/">Upload</a></button> new image.</p>
     </div>
+    <div class="row">
+      <div class="col-lg-2">
+        <form method="post" enctype="multipart/form-data" action="catoonsketch">
+        {% csrf_token %}
+          <button class="button button2" type="submit" value="False" name="catoon">Catoonize</button>
+        </form>
+      </div>
+      <div class="col-lg-2">
+        <form method="post" enctype="multipart/form-data" action="sketch">
+        {% csrf_token %}
+          <button class="button button2" type="submit" value="True" name="scketch">Sketch</button>
+        </form>
+      </div>
+    </div>
+    <br>
+    
+      <div class="col-lg-6">
+        
+        <div class="box-element">
+          {% if testim %}
+          <img class="img-thumbnail" src="{{ testim }}" alt="">
+          {% endif%}
+          {% if catoon_path %}
+          <img class="img-thumbnail" src="{{ catoon_path }}" alt="">
+          {% endif%}
+          <img class="img-thumbnail" src="{{ sketch_path }}" alt="">
+        </div>
+        <br>
+      </div>
+      
+      <div class="col-lg-6">
+        <div class="box-element">
+          <form method="post" enctype="multipart/form-data" action="dwtparameters">
+            {% csrf_token %}
+            <div>
+              <div class="form-group">
+                <label for="exampleFormControlSelect1"><b>Select channel 1:</b></label>
+                  <select name="channel_0" class="form-control" id="exampleFormControlSelect1">
+                  <option>0</option>
+                  <option>1</option>
+                  <option>2</option>
+                  </select>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlInput1"><b>Enter Keep 1:</b></label>
+                <input name="keep_0" type="number" class="form-control" id="exampleFormControlInput1" max="1.000" placeholder="min:0.0005, max:1" step="0.0001" value="0.05">
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlSelect1"><b>Select Depth 1:</b></label>
+                <select name="depth_0" class="form-control" id="exampleFormControlSelect1">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                </select>
+              </div>
+            </div>
+            <br>
+
+            <div>
+              <div class="form-group">
+                <label for="exampleFormControlSelect1"><b>Select Channel 2:</b></label>
+                <select name="channel_1" class="form-control" id="exampleFormControlSelect1">
+                <option>0</option>
+                <option>1</option>
+                <option>2</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlInput1"><b>Enter Keep 2:</b></label>
+                <input name="keep_1" type="number" class="form-control" id="exampleFormControlInput1" max="1.000" placeholder="min:0.0005, max:1" step="0.0001" value="0.05">
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlSelect1"><b>Select Depth 2</b></label>
+                <select name="depth_1" class="form-control" id="exampleFormControlSelect1">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                </select>
+              </div>
+            </div>
+            <br>
+
+            <div>
+              <div class="form-group">
+                <label for="exampleFormControlSelect1"><b>Select Channel 3:</b></label>
+                <select name="channel_2" class="form-control" id="exampleFormControlSelect1">
+                <option>0</option>
+                <option>1</option>
+                <option>2</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlInput1"><b>Enter Keep 3:</b></label>
+                <input name="keep_2" type="number" class="form-control" id="exampleFormControlInput1" max="1.000" placeholder="min:0.0005, max:1" step="0.0001" value="0.05">
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlSelect1"><b> Select Depth 3:</b></label>
+                <select name="depth_2" class="form-control" id="exampleFormControlSelect1">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                </select>
+              </div>
+            </div>
+
+            <input style="float: text-center"; type="submit" value="Submit">
+          </form>
+        </div>
+        <br>
+      </div>
+      
+    </div>
+    {% if testim %}
+    <button class="btn">
+      <a href="{{ testim }}" class="btn btn-outline-secondary add-btn" 
+      download="{{ testim }}" >Download</a>
+    </button>
+    {% endif %}
+
+    {% if catoon_path %}
+      <button class="btn">
+        <a href="{{ catoon_path }}" class="btn btn-outline-secondary add-btn" 
+        download="{{ catoon_path }}" >Download</a>
+      </button>
+      {% endif %}
+
+      {% if sketch_path %}
+      <button class="btn">
+        <a href="{{ sketch_path }}" class="btn btn-outline-secondary add-btn" 
+        download="{{ sketch_path }}" >Download</a>
+      </button>
+      {% endif %}
+    
+    <p><button><a href="dwt">Upload</a></button> new image.</p>
+  </div>
 {% endblock content %}

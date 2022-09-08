@@ -19,14 +19,6 @@ plt.rcParams['figure.figsize'] = [15, 15]
 plt.rcParams.update({'font.size':16})
 
 
-'''
-<form action="/action_page.php">
-  <label for="img">Select image:</label>
-  <input type="file" id="img" name="img" accept="image/*">
-  <input type="submit">
-</form>
-'''
-
 class DiscreteWaveletTransform:
     def __init__(self, image,):
         self.image = image

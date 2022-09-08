@@ -1,22 +1,96 @@
 from django.shortcuts import render, redirect
 from .form import ImageForm
 from .DWT import DiscreteWaveletTransform
+from .image_filter import ImageFiltering
 import os, re
 from django.http import *
 from django.conf import settings
+from .models import Image
 
 class Holder:
     def __init__(self):
         self.userImageObj = []
         self.img_path = []
         self.form = []
+        self.currentWorkingOn = []
+
+
+test = Holder()
+
+
+ 
+
+def _catoonsketch(request):
+    try:
+        if request.method == 'POST':
+            print(request.POST.dict())
+            # sketch mode
+            mode = request.POST.get('channel_0')
+            if mode == True:
+                opencvFilters = ImageFiltering(test.img_path[-1])
+                catoon = opencvFilters.cartoonize_image(sketch_mode=mode)
+                c_path = './media/dwt_images/' + str(test.userImageObj) + str(mode) + 'catoon_DWT.jpg'
+                opencvFilters.save(c_path, catoon)
+                catoon_path = '/media/dwt_images/' + str(test.userImageObj) + str(mode) + 'catoon_DWT.jpg'
+
+                context = {
+                    'catoon_path': catoon_path,
+                    }
+                return render(request, 'home.html', context)
+            elif mode == False:
+                opencvFilters = ImageFiltering(test.img_path[-1])
+                sketch = opencvFilters.cartoonize_image(sketch_mode=mode)
+
+                s_path = './media/dwt_images/' + str(test.userImageObj) + str(mode) + 'catoon_DWT.jpg'
+                opencvFilters.save(s_path, sketch)
+                sketch_path = '/media/dwt_images/' + str(test.userImageObj) + str(mode) + 'catoon_DWT.jpg'
+
+                context = {
+                    'sketch_path': sketch_path,
+                    }
+                return render(request, 'img_upload.html', context)
+    except:
+        return render(request, 'img_upload.html')
+
+def catoonsketch(request):
+    img_path = test.img_path[-1]
+    img_tit = test.userImageObj[-1]
+    opencvFilters = ImageFiltering('.' + str(img_path))
+    mode = False
+    catoon = opencvFilters.cartoonize_image(sketch_mode=mode)
+    c_path = './media/dwt_images/' + str(img_tit) + str(mode) + 'catoon_DWT.jpg'
+    opencvFilters.save(c_path, catoon)
+    catoon_path = '/media/dwt_images/' + str(img_tit) + str(mode) + 'catoon_DWT.jpg'
+
+    context = {
+        'catoon_path': catoon_path,
+        }
+    return render(request, 'dwt.html', context)
+
+def sketch(request):
+    img_path = test.img_path[-1]
+    img_tit = test.userImageObj[-1]
+    opencvFilters = ImageFiltering('.' + str(img_path))
+    mode = True
+    _sketch = opencvFilters.cartoonize_image(sketch_mode=mode)
+    s_path = './media/dwt_images/' + str(img_tit) + str(mode) + 'catoon_DWT.jpg'
+    opencvFilters.save(s_path, _sketch)
+    sketch_path = '/media/dwt_images/' + str(img_tit) + str(mode) + 'catoon_DWT.jpg'
+
+    context = {
+        'sketch_path': sketch_path,
+        }
+    return render(request, 'dwt.html', context)
+
+def home(request):
+    return render(request, 'home.html')
+
 
 def kmeans(request):
     return render(request, 'kmean_comp.html')
 
-
-
-test = Holder()
+def filters(request):
+    return render(request, 'image_filters.html')
 
 # making the media root folder and dwt_image subfolder
 def assure_path_exists(path):
@@ -91,6 +165,7 @@ def dwtparameters(request):
 
         dwt_path = './media/dwt_images/' + str(img_tit) + str(keep_0) + '_DWT.jpg'
         htmldisplay = user.save(dwt_path, stack)
+        test.currentWorkingOn.append(dwt_path)
         
         testim = '/media/dwt_images/' + str(img_tit) + str(keep_0) + '_DWT.jpg'
         context = {
@@ -105,6 +180,7 @@ def dwtparameters(request):
             'img_path': img_path,
             }
         return render(request, 'dwt.html', up_context)
+
        
 def work(request):
     return render(request, 'workspace.html',)

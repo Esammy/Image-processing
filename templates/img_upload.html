@@ -2,15 +2,67 @@
 {% load static %}
 {% block content %}
     <div class="container"  >
-        
+      <div>
+        {% if catoon_path %}
+        <div class="col-lg">
+          <div class="box-element">
+          <img class="img-thumbnail" src="{{ catoon_path }}" alt="">
+          </div>
+        </div>
+        {% endif %}
+        {% if sketch_path %}
+        <div class="col-lg">
+          <div class="box-element">
+          <img class="img-thumbnail" src="{{ sketch_path }}" alt="">
+          </div>
+      </div>
+      {% endif %}      
+
         {% if img_obj %}
             <p><b>Welcome {{ img_obj.title }}</b></p>
+              <div class="row">
+                <div class="col">
+                  <div class="collapse multi-collapse" id="multiCollapseExample1">
+                    <div class="card card-body">
+                      To Get the original RGB image set:<br>
+                      channel 1 = 0, channel 2 = 1, channel 3 = 2,<br>
+                      set all the keep to 1.0,<br>
+                      and all the depth to 4
+                    </div>
+                  </div>
+                </div>
+              </div>
+        
+              <div class="row">
+                <div class="col-lg-2">
+                  <form method="post" enctype="multipart/form-data" action="catoonsketch">
+                  {% csrf_token %}
+                    <button class="button button2" type="submit" value="False" name="catoon">Catoonize</button>
+                  </form>
+                </div>
+                <div class="col-lg-2">
+                  <form method="post" enctype="multipart/form-data" action="sketch">
+                  {% csrf_token %}
+                    <button class="button button2" type="submit" value="True" name="scketch">Sketch</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <br>
             <div class="row">
                 <div class="col-lg">
                   <div class="box-element">
                     <img class="img-thumbnail" src="{{ img_path }}" alt="">
                   </div>
                 </div>
+                {% if catoon_path %}
+                <div class="col-lg">
+                  <div class="box-element">
+                  <img class="img-thumbnail" src="{{ catoon_path }}" alt="">
+                  </div>
+                </div>
+                {% endif %}
+
                 <div class="col-lg-6">
                   <div class="box-element">
                     <form method="post" enctype="multipart/form-data" action="dwtparameters">
