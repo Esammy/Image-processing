@@ -21,6 +21,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'image_compression.apps.ImageCompressionConfig',
+    'votingsys.apps.VotingsysConfig',
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
