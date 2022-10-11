@@ -35,11 +35,17 @@
                         </li>
                     </ul>
                     <div class="d-flex my-2 my-lg-0">
-                        <a href="">
-                            <img id="cart-icon" src="{% static 'images/cart.jpg' %}">
-                            
-                        </a>
-                        <a href="#" class="nav-link bg-light">Login</a>
+                        {% if user.is_authenticated %}
+                
+                            <a  class="nav-link bg-light" href="{% url 'profile' %}">
+                                <img class="rounded-circle account-img" height="40px" width="40px" 
+                                src="{{ user.profile.image.url }}"> {{ user.username }}
+                            </a>
+                            <a class="nav-link bg-light" href="{% url 'logout' %}">Logout</a>
+                        {% else %}
+                            <a class="nav-link bg-light " href="{% url 'login' %}">Login/ </a>
+                            <a class="nav-link bg-light" href="{% url 'register' %}">register </a>
+                        {% endif %}
                         
                     </div>
                 </div>
@@ -84,11 +90,10 @@
                         <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                             <!-- Content -->
                             <h6 class="text-uppercase fw-bold mb-4">
-                                <i class="fas fa-gem me-3 text-secondary"></i>Company name
+                                <i class="fas fa-gem me-3 text-secondary"></i>Esammy
                             </h6>
                             <p>
-                                Here you can use rows and columns to organize your footer content. Lorem ipsum
-                                dolor sit amet, consectetur adipisicing elit.
+                                Hey welcome!
                             </p>
                         </div>
                         <!-- Grid column -->
@@ -104,9 +109,6 @@
                             </p>
                             <p>
                                 <a href="#!" class="text-reset">React</a>
-                            </p>
-                            <p>
-                                <a href="#!" class="text-reset">Vue</a>
                             </p>
                             <p>
                                 <a href="#!" class="text-reset">Laravel</a>
@@ -127,9 +129,6 @@
                                 <a href="#!" class="text-reset">Settings</a>
                             </p>
                             <p>
-                                <a href="#!" class="text-reset">Orders</a>
-                            </p>
-                            <p>
                                 <a href="#!" class="text-reset">Help</a>
                             </p>
                         </div>
@@ -140,14 +139,13 @@
                             <!-- Links -->
                             <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
                             <p><i class="fas fa-home me-3 text-secondary"></i> 
-                                New York, NY 10012, US
+                                Gidan Kwano, Minna Niger State, Nigeria.
                             </p>
                             <p>
                                 <i class="fas fa-envelope me-3 text-secondary"></i>
-                                    info@example.com
+                                    egwusamuel@gmail.com
                             </p>
-                            <p><i class="fas fa-phone me-3 text-secondary"></i> + 01 234 567 88</p>
-                            <p><i class="fas fa-print me-3 text-secondary"></i> + 01 234 567 89</p>
+                            <p><i class="fas fa-phone me-3 text-secondary"></i>+234 (0)8100368023</p>
                         </div>
                         <!-- Grid column -->
                     </div>
@@ -159,7 +157,7 @@
             <!-- Copyright -->
             <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.025);">
                 © 2021 Copyright:
-                <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+                <a class="text-reset fw-bold" href="/">Esammy</a>
             </div>
             <!-- Copyright -->
         </footer>
